@@ -1,0 +1,47 @@
+.background{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    bottom: 0%;
+}
+
+.janela{
+    margin-top: 4%;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding-top: 2%;
+    padding: 2%;
+    border-radius: 20px;
+    position: absolute;
+    background-color: rgb(245, 245, 245);
+    z-index: 10;
+    top: 0%;
+}
+
+.janela span{
+    display: flex;
+    align-items: flex-end;
+}
+
+/* .mostra-json{
+    margin-left: 40%;
+    margin-right: 40%;
+} */
+
+.background, .janela{
+    display: none;
+}
+
+.msgErro{
+    display: none;
+    position: absolute;
+    color: #e63946;
+    margin-left: 18%;
+    font-size: .8rem;
+    font-weight: 00;
+}
+
+/* #msgErroNome{
+    display: none;
+} */
