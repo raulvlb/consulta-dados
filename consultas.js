@@ -4,13 +4,19 @@ document.getElementById('nascimento').addEventListener('input', consultaIdadeRT)
 function consultaCEPRT() {
     let numCep = document.getElementById('cep').value;
 
-
     //arruma formatação cep para consulta
     var cep = numCep.split('-').join('');
 
     //verifica validade do cep digitado
     if (cep.length === 8) {
-
+        $('#rua').css({ 'border': 'solid 1px #212529' });
+        $('#msgErroRua').css({ 'display': 'none' });
+        $('#bairro').css({ 'border': 'solid 1px #212529' });
+        $('#msgErroBairro').css({ 'display': 'none' });
+        $('#cidade').css({ 'border': 'solid 1px #212529' });
+        $('#msgErroCidade').css({ 'display': 'none' });
+        $('#estado').css({ 'border': 'solid 1px #212529' });
+        $('#msgErroEstado').css({ 'display': 'none' });
         consultaCEP()
     }
 }
@@ -26,8 +32,8 @@ function consultaIdadeRT() {
 
         var hoje = (today.toLocaleDateString()).split('/');
 
-        //console.log(numNascimento)// aa-mm-dd
-        //console.log(hoje)// dd-mm-aa
+        // numNascimento aa-mm-dd
+        // hoje dd-mm-aa
 
 
         for (var i = Number(numNascimento[0]); i < Number(hoje[2]) - 1; i++) {
@@ -39,9 +45,12 @@ function consultaIdadeRT() {
                 idadeAtual += 1;
             }
         }
+        $('#idade').css({ 'border': 'solid 1px #212529' });
+        $('#msgErroIdade').css({ 'display': 'none' });
+        $('#msgErroIdadeInvalida').css({ 'display': 'none' });
         document.getElementById('idade').value = idadeAtual
     }
-    
+
 }
 
 function consultaCPF() {
@@ -49,6 +58,7 @@ function consultaCPF() {
 
     cpf = cpf.replace(/[^\d]+/g, '');
     if (cpf == '') return false;
+
     // Elimina CPFs invalidos conhecidos	
     if (cpf.length != 11 ||
         cpf == "00000000000" ||
@@ -62,6 +72,7 @@ function consultaCPF() {
         cpf == "88888888888" ||
         cpf == "99999999999")
         return false;
+
     // Valida 1o digito	
     add = 0;
     for (i = 0; i < 9; i++)
@@ -71,6 +82,7 @@ function consultaCPF() {
         rev = 0;
     if (rev != parseInt(cpf.charAt(9)))
         return false;
+
     // Valida 2o digito	
     add = 0;
     for (i = 0; i < 10; i++)
@@ -81,7 +93,6 @@ function consultaCPF() {
     if (rev != parseInt(cpf.charAt(10)))
         return false;
     return true;
-
 }
 
 
@@ -108,9 +119,8 @@ function consultaIdade() {
 
     var hoje = (today.toLocaleDateString()).split('/');
 
-    //console.log(numNascimento)// aa-mm-dd
-    //console.log(hoje)// dd-mm-aa
-
+    // numNascimentoa a-mm-dd
+    // hoje dd-mm-aa
 
     for (var i = Number(numNascimento[0]); i < Number(hoje[2]) - 1; i++) {
         idadeAtual += 1;
@@ -169,19 +179,16 @@ function consultaHobby() {
 function consultaLGPD() {
 
     return ($('.lgpdCheckbox').is(':checked'))
-
 }
 
 async function consultaCEP() {
     let numCep = document.getElementById('cep').value;
-
 
     //arruma formatação cep para consulta
     var cep = numCep.split('-').join('');
 
     //verifica validade do cep digitado
     if (cep.length !== 8) {
-
         return false
     }
 
@@ -192,23 +199,16 @@ async function consultaCEP() {
 
     let data = await response.json();
 
-
-    //console.log(data)
-
     document.getElementById('rua').value = data.logradouro
     document.getElementById('bairro').value = data.bairro
     document.getElementById('cidade').value = data.localidade
     document.getElementById('estado').value = data.uf
 
     recebeDadosCep(data)
-    console.log(data)
-    if(data.erro){
-        return(false)
-    }else{
-        return(true)
+
+    if (data.erro) {
+        return (false)
+    } else {
+        return (true)
     }
-    //return (data)
-
 }
-
-

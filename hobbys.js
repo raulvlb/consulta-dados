@@ -2,7 +2,6 @@
 var id = 0; 
 var quantidadeHobbys = 0;
 
-
 function addHobby() {
     var hobby = ($("#hobby").prop('value'))
 
@@ -10,16 +9,12 @@ function addHobby() {
         return;
     }
 
-    index = id+hobby
-
-
     $('#hobbys').append(`<li id="${id}" class="testando">
     <p>#${hobby}</p>
     <span onclick="dellHobby(${id})" class="material-symbols-outlined hobbyCloser testandoando">
     cancel
     </span>
     </li>`);
-
 
     id += 1;
     quantidadeHobbys += 1;
