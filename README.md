@@ -4,6 +4,7 @@ link do site: https://raulvlb.github.io/consulta-dados/
 
 ![Form de consulta](https://i.imgur.com/EFVRA2H.png)
 
+- Utiliza Javascript puro, jquery, html e css como tecnologias
 - Todos os campos são obrigatorios para consulta
 - O campo de CPF é validado com base na formula de CPF
 - O campo de CEP é validade com a api viacep
