@@ -28,12 +28,16 @@
     top: 0%;
 }
 
+.janela-span{
+    display: flex;
+    justify-content: end;
+}
+
 .janela span {
     cursor: pointer;
     color: red;
     font-size: 2rem;
     font-weight: 400;
-    margin-left: 93%;
     transition: all 1s ease;
 }
 
@@ -41,9 +45,13 @@
     transform: rotate(180deg);
 }
 
-.janela button {
+.janela-button{
+    display: flex;
+    justify-content: end;
     margin-top: 3%;
-    margin-left: 70%;
+}
+
+.janela button {
     cursor: pointer;
     color: rgb(104, 0, 201);
     background-color: rgba(245, 245, 245, 0.9);
