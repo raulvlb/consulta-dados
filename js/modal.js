@@ -73,8 +73,9 @@ async function checarDados() {
         consultaHobby() &&
         consultaLGPD()
     ) {
-        document.getElementById('janela', 'background').style.display = "block";
-        document.getElementById('background').style.display = "block";
+        $('html, body').animate({scrollTop:0}, 'slow');
+        $('#janela, #background').fadeIn("1500")
+        // $('#janela, #background').css({ 'display': 'block' })
         await $.each($('.testando p'), function (index, element) {
             listaHobbys.push((element.innerHTML).split('#').join(''))
         });
@@ -105,14 +106,19 @@ async function checarDados() {
                 $('#msgErroIdadeInvalida').css({ 'display': 'block' });
             }
         }
-        if (dadosCep) {
+        if($('#cep').prop("value") == ""){
+            $('#cep').css({ 'border': 'solid 1px #e63946' });
+            $('#msgErroCep').css({ 'display': 'block' });
+        }else if (dadosCep) {
             if (dadosCep.erro) {
                 $('#cep').css({ 'border': 'solid 1px #e63946' });
                 $('#msgErroCepInvalido').css({ 'display': 'block' });
             }
-        } else {
-            $('#cep').css({ 'border': 'solid 1px #e63946' });
-            $('#msgErroCep').css({ 'display': 'block' });
+        }else{
+            if($(('#cep').prop("value")).length > 0){
+                $('#cep').css({ 'border': 'solid 1px #e63946' });
+                $('#msgErroCep').css({ 'display': 'block' });
+            }
         }
         if (!consultaRua() || $('#rua').prop("value") == 'undefined') {
             $('#rua').css({ 'border': 'solid 1px #e63946' });
@@ -189,17 +195,15 @@ function DefinicaoObjeto() {
 }
 
 function closeModal() {
+    $('#janela, #background').fadeOut("1500")
     $('#mostra-json').empty()
     listaHobbys = []
-    document.getElementById('janela').style.display = "none";
-    document.getElementById('background').style.display = "none";
 }
 
 function novaConsulta() {
+    $('#janela, #background').fadeOut("1500")
     $('#mostra-json').empty()
     listaHobbys = []
-    document.getElementById('janela').style.display = "none";
-    document.getElementById('background').style.display = "none";
 
     $("#nome").prop("value", "")
     $("#cpf").prop("value", "")

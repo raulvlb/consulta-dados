@@ -1,17 +1,21 @@
-.background, .janela{
+.background,
+.janela {
     display: none;
 }
 
-.background{
-    position: absolute;
+.background {
+    position: fixed;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.95);
+    background-position-x: 50%;
+    background-position-y: 0;
+    background-repeat: repeat-y;
     bottom: 0%;
     z-index: 5;
 }
 
-.janela{
+.janela {
     margin-top: 4%;
     width: 60%;
     left: 50%;
@@ -24,7 +28,7 @@
     top: 0%;
 }
 
-.janela span{
+.janela span {
     cursor: pointer;
     color: red;
     font-size: 2rem;
@@ -32,11 +36,12 @@
     margin-left: 93%;
     transition: all 1s ease;
 }
-.janela span:hover{
+
+.janela span:hover {
     transform: rotate(180deg);
 }
 
-.janela button{
+.janela button {
     margin-top: 3%;
     margin-left: 70%;
     cursor: pointer;
@@ -57,11 +62,11 @@
     transform: translate(0px, -10%);
 }
 
-.modalCloser{
+.modalCloser {
     text-align: center;
 }
 
-.mostra-json{
+.mostra-json {
     max-height: 400px;
     overflow: auto;
     padding-right: 5px;

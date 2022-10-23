@@ -1,0 +1,73 @@
+@media (max-width: 900px) {
+    .inputs {
+        display: block;
+    }
+
+    .header {
+        padding-left: 0%;
+        padding-bottom: 4%;
+        text-align: center;
+    }
+
+    .box01,
+    .box02 {
+        padding: 0%;
+    }
+
+    .container-input {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 6%;
+    }
+
+    .msgErro {
+        margin-left: 0px;
+        margin-top: 40px;
+    }
+
+    .hobbys-input {
+        margin-right: 0;
+    }
+
+    .msgErroHobby {
+        margin-left: 0px;
+        margin-top: 40px;
+    }
+
+    .hobbys-input button {
+        margin-top: 20px;
+    }
+
+    .box02 h4 {
+        text-align: center;
+    }
+
+    .footer {
+        display: block;
+        text-align: center;
+    }
+
+    .sem-hobby p {
+        margin-top: 5%;
+    }
+
+    .msgErroLgpd {
+        margin-left: 10px;
+        margin-top: 10%;
+    }
+
+    .footer button {
+        margin-top: 20px;
+    }
+
+    .janela span {
+        margin-left: 90%; 
+    }
+
+    .janela button {
+        margin-top: 3%;
+        margin-left: 20%;
+    }
+    
+}
