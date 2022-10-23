@@ -1,62 +1,16 @@
-document.getElementById('background').addEventListener('click', closeModal)
-document.getElementById('modalCloser').addEventListener('click', closeModal)
-$("#nome").mousedown(function () {
-    $('#nome').css({ 'border': 'solid 1px #212529' });
-    $('#msgErroNome').css({ 'display': 'none' });
-});
-$("#cpf").mousedown(function () {
-    $('#cpf').css({ 'border': 'solid 1px #212529' });
-    $('#msgErroCpf').css({ 'display': 'none' });
-    $('#msgErroCpfInvalido').css({ 'display': 'none' });
-});
-$("#nascimento").mousedown(function () {
-    $('#nascimento').css({ 'border': 'solid 1px #212529' });
-    $('#msgErroNascimento').css({ 'display': 'none' });
-});
-$("#idade").mousedown(function () {
-    $('#idade').css({ 'border': 'solid 1px #212529' });
-    $('#msgErroIdade').css({ 'display': 'none' });
-    $('#msgErroIdadeInvalida').css({ 'display': 'none' });
-});
-$("#cep").mousedown(function () {
-    $('#cep').css({ 'border': 'solid 1px #212529' });
-    $('#msgErroCep').css({ 'display': 'none' });
-    $('#msgErroCepInvalido').css({ 'display': 'none' });
-});
-$("#rua").mousedown(function () {
-    $('#rua').css({ 'border': 'solid 1px #212529' });
-    $('#msgErroRua').css({ 'display': 'none' });
-});
-$("#numero").mousedown(function () {
-    $('#numero').css({ 'border': 'solid 1px #212529' });
-    $('#msgErroNumero').css({ 'display': 'none' });
-});
-$("#bairro").mousedown(function () {
-    $('#bairro').css({ 'border': 'solid 1px #212529' });
-    $('#msgErroBairro').css({ 'display': 'none' });
-});
-$("#cidade").mousedown(function () {
-    $('#cidade').css({ 'border': 'solid 1px #212529' });
-    $('#msgErroCidade').css({ 'display': 'none' });
-});
-$("#estado").mousedown(function () {
-    $('#estado').css({ 'border': 'solid 1px #212529' });
-    $('#msgErroEstado').css({ 'display': 'none' });
-});
-$("#hobby").mousedown(function () {
-    $('#hobby').css({ 'border': 'solid 1px #212529' });
-    $('#msgErroHobby').css({ 'display': 'none' });
-});
-$("#lgpd").mousedown(function () {
-    $('#lgpd').css('outline-width', '0px');
-    $('#msgErroLgpd').css({ 'display': 'none' });
-});
+// script para validar as informações digitadas, exibir erros, montar json, montar e exibir o modal
 
+// fecha o modal caso clique fora dele ou no botão de fechar
+$('#background').on('click', fechaModal)
+$('#modalCloser').on('click', fechaModal)
 
+// pega os dados da api que foram consultados no script de consulta
 let dadosCep;
 
+// cria uma lista de hobbys para o json entender quais são os hobbys ativos
 let listaHobbys = [];
 
+// verifica todas as informações antes de criar o json e o modal
 async function checarDados() {
 
     if (
@@ -73,19 +27,27 @@ async function checarDados() {
         consultaHobby() &&
         consultaLGPD()
     ) {
-        $('html, body').animate({scrollTop:0}, 'slow');
-        $('#janela, #background').fadeIn("1500")
-        // $('#janela, #background').css({ 'display': 'block' })
-        await $.each($('.testando p'), function (index, element) {
+        // popula a lista de hobbys com os hobbys ativos
+        await $.each($('.hobbys p'), function (index, element) {
             listaHobbys.push((element.innerHTML).split('#').join(''))
         });
+
+        // cria o json
         criaJSON()
 
+        // exibe o modal
+        $('html, body').animate({ scrollTop: 0 }, 'slow');
+        $('#janela, #background').fadeIn("1500")
+
+        // verifica quais campos estão com erro e exibe
     } else {
+        // erro no campo nome
         if (!consultaNome()) {
             $('#nome').css({ 'border': 'solid 1px #e63946' });
             $('#msgErroNome').css({ 'display': 'block' });
         }
+
+        // erro no campo cpf
         if (!consultaCPF()) {
             $('#cpf').css({ 'border': 'solid 1px #e63946' });
             if ($('#cpf').prop("value") == '') {
@@ -94,10 +56,14 @@ async function checarDados() {
                 $('#msgErroCpfInvalido').css({ 'display': 'block' });
             }
         }
+
+        // erro no campo data de nascimento
         if (!consultaDataNascimento()) {
             $('#nascimento').css({ 'border': 'solid 1px #e63946' });
             $('#msgErroNascimento').css({ 'display': 'block' });
         }
+
+        // erro no campo idade
         if (!consultaIdade()) {
             $('#idade').css({ 'border': 'solid 1px #e63946' });
             if ($('#idade').prop("value") == '') {
@@ -106,44 +72,60 @@ async function checarDados() {
                 $('#msgErroIdadeInvalida').css({ 'display': 'block' });
             }
         }
-        if($('#cep').prop("value") == ""){
+
+        // erro no campo cep
+        if ($('#cep').prop("value") == "") {
             $('#cep').css({ 'border': 'solid 1px #e63946' });
             $('#msgErroCep').css({ 'display': 'block' });
-        }else if (dadosCep) {
+        } else if (dadosCep) {
             if (dadosCep.erro) {
                 $('#cep').css({ 'border': 'solid 1px #e63946' });
                 $('#msgErroCepInvalido').css({ 'display': 'block' });
             }
-        }else{
-            if($(('#cep').prop("value")).length > 0){
+        } else {
+            if ($(('#cep').prop("value")).length > 0) {
                 $('#cep').css({ 'border': 'solid 1px #e63946' });
                 $('#msgErroCep').css({ 'display': 'block' });
             }
         }
+
+        // erro no campo rua
         if (!consultaRua() || $('#rua').prop("value") == 'undefined') {
             $('#rua').css({ 'border': 'solid 1px #e63946' });
             $('#msgErroRua').css({ 'display': 'block' });
         }
+
+        // erro no campo numero
         if (!consultaNumero()) {
             $('#numero').css({ 'border': 'solid 1px #e63946' });
             $('#msgErroNumero').css({ 'display': 'block' });
         }
+
+        // erro no campo bairro
         if (!consultaBairro() || $('#bairro').prop("value") == 'undefined') {
             $('#bairro').css({ 'border': 'solid 1px #e63946' });
             $('#msgErroBairro').css({ 'display': 'block' });
         }
+
+        // erro no campo cidade
         if (!consultaCidade() || $('#cidade').prop("value") == 'undefined') {
             $('#cidade').css({ 'border': 'solid 1px #e63946' });
             $('#msgErroCidade').css({ 'display': 'block' });
         }
+
+        // erro no campo estado
         if (!consultaEstado() || $('#estado').prop("value") == 'undefined') {
             $('#estado').css({ 'border': 'solid 1px #e63946' });
             $('#msgErroEstado').css({ 'display': 'block' });
         }
+
+        // erro no campo hobby
         if (!consultaHobby()) {
             $('#hobby').css({ 'border': 'solid 1px #e63946' });
             $('#msgErroHobby').css({ 'display': 'block' });
         }
+
+        // erro no campo lgpd
         if (!consultaLGPD()) {
             $('#lgpd').css('outline-color', '#e63946');
             $('#lgpd').css('outline-style', 'solid');
@@ -153,37 +135,44 @@ async function checarDados() {
     }
 }
 
+// recebe os dados da api do cep e armazena em uma variavel para ser usada nesse script
 function recebeDadosCep(data) {
     dadosCep = data
 }
 
+// cria e formata o json para ser exibido no modal
 function criaJSON() {
-    var meuObj = new DefinicaoObjeto();
-    var consultaJSON = JSON.stringify(meuObj)
-    var formatado = JSON.parse(consultaJSON)
-    var meuObj = new DefinicaoObjeto();
-    $('#mostra-json').append(`
+    // criando o json
+    let cepObj = new CepObjeto();
+
+    // formatando o json
+    let consultaJSON = JSON.stringify(cepObj)
+    let jsonFormatado = JSON.parse(consultaJSON)
+
+    // criando a tag que será usada no modal com os dados do json
+    $('#mostraJson').append(`
     <pre style="word-wrap: break-word; white-space: pre-wrap;">
     {
-        "nome": "${formatado.Nome}"
-        "cpf": "${formatado.Cpf}"
-        "data_de_aniversario": "${formatado.Data_de_aniversario}"
-        "idade": "${formatado.Idade}"
-        "cep": "${formatado.Cep}"
-        "rua": "${formatado.Rua}"
-        "numero": "${formatado.Numero}"
-        "bairro": "${formatado.Bairro}"
-        "cidade": "${formatado.Cidade}"
-        "estado": "${formatado.Estado}"
-        "hobbys": "${formatado.Hobbys}"
+        "nome": "${jsonFormatado.Nome}"
+        "cpf": "${jsonFormatado.Cpf}"
+        "data_de_nascimento": "${jsonFormatado.Data_de_nascimento}"
+        "idade": "${jsonFormatado.Idade}"
+        "cep": "${jsonFormatado.Cep}"
+        "rua": "${jsonFormatado.Rua}"
+        "numero": "${jsonFormatado.Numero}"
+        "bairro": "${jsonFormatado.Bairro}"
+        "cidade": "${jsonFormatado.Cidade}"
+        "estado": "${jsonFormatado.Estado}"
+        "hobbys": "${jsonFormatado.Hobbys}"
     }
     </pre>`)
 }
 
-function DefinicaoObjeto() {
+// criando o objeto para o json
+function CepObjeto() {
     this.Nome = $("#nome").prop("value")
     this.Cpf = $("#cpf").prop("value")
-    this.Data_de_aniversario = $("#nascimento").prop("value")
+    this.Data_de_nascimento = $("#nascimento").prop("value")
     this.Idade = $("#idade").prop("value")
     this.Cep = $("#cep").prop("value")
     this.Rua = dadosCep.logradouro
@@ -194,17 +183,24 @@ function DefinicaoObjeto() {
     this.Hobbys = listaHobbys
 }
 
-function closeModal() {
+// fecha o modal mas não reseta os valores dos inputs
+function fechaModal() {
+    // fechando o modal
     $('#janela, #background').fadeOut("1500")
-    $('#mostra-json').empty()
+
+    // excluindo o json
+    $('#mostraJson').empty()
+
+    // zerando a lista de hobbys, para não somar com a lista de uma nova consulta
     listaHobbys = []
 }
 
+// fecha o modal e reseta os valores do inputs
 function novaConsulta() {
-    $('#janela, #background').fadeOut("1500")
-    $('#mostra-json').empty()
-    listaHobbys = []
+    // fecha o modal mas não reseta os valores dos inputs
+    fechaModal()
 
+    // resetando os valores dos inputs
     $("#nome").prop("value", "")
     $("#cpf").prop("value", "")
     $("#nascimento").prop("value", "")
@@ -217,6 +213,7 @@ function novaConsulta() {
     $("#estado").prop("value", "")
     $("#hobby").prop("value", "")
     $('#hobbys').empty()
-    $('#sem-hobby').css('display', 'block')
+    quantidadeHobbys = 0
+    $('#semHobby').css('display', 'block')
     $(".lgpdCheckbox").prop("checked", false)
 }

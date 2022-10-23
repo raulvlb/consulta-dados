@@ -10,16 +10,18 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 300% 300%;
-    animation: color 10s ease infinite;
+    animation: color 8s ease infinite;
 }
 
-@keyframes color{
+@keyframes color {
     0% {
         background-position: 0% 50%;
     }
+
     50% {
         background-position: 100% 50%;
     }
+
     100% {
         background-position: 0% 50%;
     }
@@ -27,7 +29,7 @@ body {
 
 .container {
     background-color: rgba(245, 245, 245, 0.9);
-    margin: 4% 20% 4% 20%;
+    margin: 2% 20% 0% 20%;
     padding: 2%;
     border-radius: 20px;
     box-shadow: 0.1px 0px 20px black;
@@ -55,14 +57,14 @@ body {
     width: 100%;
 }
 
-.container-input {
+.containerInput {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-bottom: 4%;
 }
 
-.container-input input {
+.containerInput input {
     font-weight: 700;
     width: 200px;
     padding: .5% 0% .5% 2%;
@@ -72,17 +74,17 @@ body {
     border-radius: 5px;
 }
 
-.hobbys-input {
+.hobbysInput {
     margin-right: 80px;
 }
 
-.hobbys-input button {
+.hobbysInput button {
     height: 20px;
     background-color: none;
     border: none;
 }
 
-.hobbys-input span {
+.hobbysInput span {
     cursor: pointer;
     color: black;
     font-weight: 400;
@@ -91,7 +93,7 @@ body {
     transition: all .5s ease;
 }
 
-.hobbys-input span:hover {
+.hobbysInput span:hover {
     color: rgb(104, 0, 201);
     transform: scale(1.2) rotate(180deg);
 }
@@ -108,18 +110,18 @@ label {
     font-weight: 700;
 }
 
-.sem-hobby p {
+.semHobby p {
     margin-top: 20%;
     text-align: center;
     font-weight: 500;
     color: #5f5f5f;
 }
 
-.emoji-span {
+.emojiSpan {
     font-size: 2.5rem;
 }
 
-.hobbys-span {
+.hobbysSpan {
     color: rgb(104, 0, 201);
     font-weight: 700;
 }
@@ -208,12 +210,12 @@ label {
     padding-top: 3%;
 }
 
-.input-footer {
+.inputFooter {
     display: flex;
     align-items: center;
 }
 
-.input-footer input {
+.inputFooter input {
     cursor: pointer;
     font-weight: 700;
     padding: .5% 0% .5% 2%;
@@ -225,12 +227,13 @@ label {
     display: inline-block;
 }
 
-.input-footer a{
+.inputFooter a {
     font-weight: 700;
     color: rgb(104, 0, 201);
     text-decoration: none;
 }
-.input-footer a:hover{
+
+.inputFooter a:hover {
     text-decoration: underline;
 }
 
@@ -257,7 +260,7 @@ input[type='checkbox'] {
     transform: translate(0px, -10%);
 }
 
-.msgErro{
+.msgErro {
     display: none;
     position: absolute;
     color: #e63946;
@@ -266,7 +269,7 @@ input[type='checkbox'] {
     font-size: 0.8rem;
 }
 
-.msgErroHobby{
+.msgErroHobby {
     display: none;
     position: absolute;
     color: #e63946;
@@ -275,11 +278,32 @@ input[type='checkbox'] {
     font-size: 0.8rem;
 }
 
-.msgErroLgpd{
+.msgErroLgpd {
     display: none;
     position: absolute;
     color: #e63946;
     margin-left: 0px;
     margin-top: 35px;
     font-size: 0.8rem;
+}
+
+footer{
+    background-color: rgba(255, 255, 255, 0.5);
+    font-weight: 700;
+    color: black;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    text-align: center;
+}
+
+footer a{
+    color: rgb(104, 0, 201);
+    text-decoration: none;
+    transition: all .5s ease;
+}
+
+footer a:hover{
+    cursor: pointer;
+    text-decoration: underline;
 }

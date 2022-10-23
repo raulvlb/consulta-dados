@@ -6,19 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- estilos -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="css/responsivo.css">
 
+    <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
         rel="stylesheet">
 
+    <!-- ícones -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
-    <title>Consulta</title>
+    <!-- Ícone da aba de navegação -->
+    <link rel="icon" type="image/png" href="midia/icons/icone-aba.png" sizes="24" />
+    <title>Consulta de Dados</title>
 </head>
 
 <body>
@@ -35,7 +40,7 @@
             <div class="inputs">
 
                 <div class="box01">
-                    <div class="container-input">
+                    <div class="containerInput">
                         <label for="">Nome</label>
                         <input type="text" id="nome">
                         <div id="msgErroNome" class="msgErro">
@@ -43,7 +48,7 @@
                         </div>
                     </div>
 
-                    <div class="container-input">
+                    <div class="containerInput">
                         <label for="">CPF</label>
                         <input type="text" autocomplete="off" maxlength="14" id="cpf">
                         <div id="msgErroCpf" class="msgErro">
@@ -54,15 +59,15 @@
                         </div>
                     </div>
 
-                    <div class="container-input">
+                    <div class="containerInput">
                         <label for="">Data de Nascimento</label>
                         <input type="date" id="nascimento" min="1900-01-01" max="2022-12-31">
                         <div id="msgErroNascimento" class="msgErro">
                             <p>Campo Obrigatório</p>
                         </div>
                     </div>
-                    
-                    <div class="container-input">
+
+                    <div class="containerInput">
                         <label for="">Idade</label>
                         <input type="text" id="idade" maxlength="4">
                         <div id="msgErroIdade" class="msgErro">
@@ -73,18 +78,18 @@
                         </div>
                     </div>
 
-                    <div class="container-input">
+                    <div class="containerInput">
                         <label for="">CEP</label>
                         <input type="text" maxlength="9" id="cep">
                         <div id="msgErroCep" class="msgErro">
                             <p>Campo Obrigatório</p>
                         </div>
                         <div id="msgErroCepInvalido" class="msgErro">
-                            <p>Cep Inválido</p>
+                            <p>CEP Inválido</p>
                         </div>
                     </div>
 
-                    <div class="container-input">
+                    <div class="containerInput">
                         <label for="">Rua</label>
                         <input type="text" id="rua">
                         <div id="msgErroRua" class="msgErro">
@@ -92,7 +97,7 @@
                         </div>
                     </div>
 
-                    <div class="container-input">
+                    <div class="containerInput">
                         <label for="">Número</label>
                         <input type="text" id="numero">
                         <div id="msgErroNumero" class="msgErro">
@@ -100,7 +105,7 @@
                         </div>
                     </div>
 
-                    <div class="container-input">
+                    <div class="containerInput">
                         <label for="">Bairro</label>
                         <input type="text" id="bairro">
                         <div id="msgErroBairro" class="msgErro">
@@ -108,7 +113,7 @@
                         </div>
                     </div>
 
-                    <div class="container-input">
+                    <div class="containerInput">
                         <label for="">Cidade</label>
                         <input type="text" id="cidade">
                         <div id="msgErroCidade" class="msgErro">
@@ -116,7 +121,7 @@
                         </div>
                     </div>
 
-                    <div class="container-input">
+                    <div class="containerInput">
                         <label for="">Estado</label>
                         <input type="text" id="estado">
                         <div id="msgErroEstado" class="msgErro">
@@ -127,7 +132,7 @@
                 </div>
 
                 <div class="box02">
-                    <div class="container-input hobbys-input">
+                    <div class="containerInput hobbysInput">
                         <label for="">Hobby</label>
                         <input type="text" id="hobby" maxlength="30">
                         <button type="button" onclick="addHobby()" class="submit">
@@ -140,10 +145,10 @@
                         </div>
                     </div>
                     <h4>Lista de Hobbys:</h4>
-                    <div class="sem-hobby" id="sem-hobby">
-                        <p>Sem <span class="hobbys-span">Hobbys</span> cadastrados<br/>
-                            no momento<br/>
-                            <span class="emoji-span">&#128532</span>
+                    <div class="semHobby" id="semHobby">
+                        <p>Sem <span class="hobbysSpan">Hobbys</span> cadastrados<br />
+                            no momento<br />
+                            <span class="emojiSpan">&#128532</span>
                         </p>
                     </div>
                     <div class="boxHobbys" id="boxHobbys">
@@ -154,32 +159,38 @@
             </div>
 
             <div class="footer">
-                <div class="input-footer">
-                    <label for="">Aceito os termos da <a href="http://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm" target="_blank">Lei Geral de Proteção de Dados Pessoais (LGPD)</a></label>
+                <div class="inputFooter">
+                    <label for="">Aceito os termos da <a
+                            href="http://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm"
+                            target="_blank">Lei Geral de Proteção de Dados Pessoais (LGPD)</a></label>
                     <input type="checkbox" class="lgpdCheckbox" id="lgpd">
                     <div id="msgErroLgpd" class="msgErroLgpd">
                         <p>É nescessario autorizar os termos LGPD</p>
                     </div>
                 </div>
-                <button type="button" href="#modal" onclick="checarDados()" id="submitButton" class="submit">Consultar</button>
+                <button type="button" href="#modal" onclick="checarDados()" id="submitButton"
+                    class="submit">Consultar</button>
             </div>
         </form>
     </div>
     <p id="values"></p>
 
 
+    <footer>
+        <p>Desenvolvido por <a href="https://github.com/raulvlb" target="_blank">Raul Barra</a> | 2022</p>
+    </footer>
 
     <div class="janela" id="janela">
-        <div class="janela-span">
+        <div class="janelaSpan">
             <span class="material-symbols-outlined modalCloser" id="modalCloser">
                 cancel
             </span>
         </div>
 
-        <div class="mostra-json" id="mostra-json">
-            
+        <div id="mostraJson">
+
         </div>
-        <div class="janela-button">
+        <div class="janelaButton">
             <button type="button" onclick="novaConsulta()">Nova Consulta</button>
         </div>
     </div>
@@ -189,7 +200,8 @@
     <script src="js/hobbys.js"></script>
     <script src="js/jquery-3.6.1.min.js"></script>
     <script src="js/consultas.js"></script>
-    <script src="js/modal.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/oculta-erro.js"></script>
 </body>
 
 </html>

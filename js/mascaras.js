@@ -1,101 +1,115 @@
-//aceitar apenas numeros como caracteres
-function checkCharNum(e) {
+// script para criar marcaras para os valores dos inputs
+
+// aceitar apenas numeros como caracteres
+function checaCaractereNumero(e) {
     const char = String.fromCharCode(e.keyCode);
 
     const pattern = '[0-9]';
 
-    if(char.match(pattern)) { 
+    if (char.match(pattern)) {
         return true;
     }
 }
 
-//aceitar apenas letras como caracteres
-function checkCharString(e) {
+// aceitar apenas letras como caracteres
+function checaCaractereString(e) {
     const char = String.fromCharCode(e.keyCode);
 
     const pattern = '[a-zA-Z ]';
 
-    if(char.match(pattern)) { 
+    if (char.match(pattern)) {
         return true;
     }
 }
 
-//mascara nome
+// mascara nome
 const inputNome = document.getElementById('nome');
 
-inputNome.addEventListener('keypress', function(e) {
+// faz o input nome aceitar apenas letras
+inputNome.addEventListener('keypress', function (e) {
 
-    if(!checkCharString(e)) {
+    if (!checaCaractereString(e)) {
         e.preventDefault();
     }
 
 })
 
-//mascara cpf
+// mascara cpf
 const inputCPF = document.getElementById('cpf');
 
-inputCPF.addEventListener('keypress', function(e) {
+// faz o input cpf aceitar apenas numeros e modifica sua formatação quando digitado
+inputCPF.addEventListener('keypress', function (e) {
 
-    if(!checkCharNum(e)) {
+    if (!checaCaractereNumero(e)) {
         e.preventDefault();
     }
 
     let inputLength = inputCPF.value.length
-    
-    if (inputLength === 3 || inputLength === 7){
+
+    // aplica . e - para se adequar a formatação padrão e previnir erros por parte do usuário
+    if (inputLength === 3 || inputLength === 7) {
         inputCPF.value += '.'
-    }else if(inputLength === 11){
+    } else if (inputLength === 11) {
         inputCPF.value += '-'
     }
 
 })
 
-//mascara idade
+// mascara idade
 const inputIdade = document.getElementById('idade');
 
-inputIdade.addEventListener('keypress', function(e) {
+// faz o input idade aceitar apenas números
+inputIdade.addEventListener('keypress', function (e) {
 
-    if(!checkCharNum(e)) {
+    if (!checaCaractereNumero(e)) {
         e.preventDefault();
     }
 
 })
 
-//mascara CEP
+// mascara CEP
 const inputCEP = document.getElementById('cep');
 
-inputCEP.addEventListener('keypress', function(e) {
+// faz o input cep aceitar apenas numeros
+inputCEP.addEventListener('keypress', function (e) {
 
-    if(!checkCharNum(e)) {
+    if (!checaCaractereNumero(e)) {
         e.preventDefault();
     }
 
     let inputLength = inputCEP.value.length
-    
-    if (inputLength === 5){
+
+    // aplica - para se adequar a formatação padrão e previnir erros por parte do usuário
+    if (inputLength === 5) {
         inputCEP.value += '-'
     }
 
 })
 
-//mascara cidade
+// mascara cidade
 const inputCidade = document.getElementById('cidade');
 
-inputCidade.addEventListener('keypress', function(e) {
+// faz o input cidade aceitar apenas letras
+inputCidade.addEventListener('keypress', function (e) {
 
-    if(!checkCharString(e)) {
+    if (!checaCaractereString(e)) {
         e.preventDefault();
     }
 
 })
 
-//mascara estado
+// mascara estado
 const inputEstado = document.getElementById('estado');
 
-inputEstado.addEventListener('keypress', function(e) {
+// faz o input estado aceitar apenas letras
+inputEstado.addEventListener('keypress', function (e) {
 
-    if(!checkCharString(e)) {
+    if (!checaCaractereString(e)) {
         e.preventDefault();
     }
 
 })
+
+// inputs como rua, bairro, numero e hobbys podem aceitar tanto numeros quanto letras como caracteres
+// pois existe a possibilidade desses campos usarem tais configurações
+// ex: rua: 12° avenida | bairro: Abolição 2 | numero: 104B | hobby: Estudar cálculo 2

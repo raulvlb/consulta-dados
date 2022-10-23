@@ -1,13 +1,16 @@
-document.getElementById('cep').addEventListener('input', consultaCEPRT)
-document.getElementById('nascimento').addEventListener('input', consultaIdadeRT)
+// realiza alterações em campos que podem ter relação com os inputs de cep e data de nascimento
+// RT no final vem de real time, pois as variaveis dessas funções serão alteradas enquando outras estão sendo digitadas
+$('#cep').on('input', consultaCEPRT)
+$('#nascimento').on('input', consultaIdadeRT)
 
+// consulta o cep e altera os valores dos inputs que obtem a partir da api
 function consultaCEPRT() {
-    let numCep = document.getElementById('cep').value;
+    let numCep = $('#cep').prop('value')
 
-    //arruma formatação cep para consulta
-    var cep = numCep.split('-').join('');
+    // arruma formatação cep para consulta
+    let cep = numCep.split('-').join('');
 
-    //verifica validade do cep digitado
+    // verifica validade do cep digitado e remove estilização de erro se tiver
     if (cep.length === 8) {
         $('#rua').css({ 'border': 'solid 1px #212529' });
         $('#msgErroRua').css({ 'display': 'none' });
@@ -21,30 +24,36 @@ function consultaCEPRT() {
     }
 }
 
+// consulta data de nascimento, calcula a idade e atribui o valor no input de idade
 function consultaIdadeRT() {
-    var num = document.getElementById('nascimento').value;
+    let num = $('#nascimento').prop('value')
+
     if (num.length === 10) {
-        var numNascimento = (document.getElementById('nascimento').value).split('-');
-        var idadeAtual = 0;
+
+        let numNascimento = ($('#nascimento').prop('value').split('-'))
+        let idadeAtual = 0;
 
         const timeElapsed = Date.now();
         const today = new Date(timeElapsed);
 
-        var hoje = (today.toLocaleDateString()).split('/');
+        let hoje = (today.toLocaleDateString()).split('/');
 
         // numNascimento aa-mm-dd
         // hoje dd-mm-aa
 
-
-        for (var i = Number(numNascimento[0]); i < Number(hoje[2]) - 1; i++) {
+        // calculando a idade pelo ano
+        for (let i = Number(numNascimento[0]); i < Number(hoje[2]) - 1; i++) {
             idadeAtual += 1;
         }
 
+        // calculando idade pelo mês e dia
         if (Number(hoje[1]) > Number(numNascimento[1])) {
             if (Number(hoje[0]) > Number(numNascimento[2])) {
                 idadeAtual += 1;
             }
         }
+
+        // remove estilização se erro se tiver e atribui o valor da idade no seu input
         $('#idade').css({ 'border': 'solid 1px #212529' });
         $('#msgErroIdade').css({ 'display': 'none' });
         $('#msgErroIdadeInvalida').css({ 'display': 'none' });
@@ -53,8 +62,9 @@ function consultaIdadeRT() {
 
 }
 
+// verifica se o cpf é um valor válido
 function consultaCPF() {
-    var cpf = document.getElementById('cpf').value;
+    let cpf = $('#cpf').prop('value')
 
     cpf = cpf.replace(/[^\d]+/g, '');
     if (cpf == '') return false;
@@ -95,34 +105,35 @@ function consultaCPF() {
     return true;
 }
 
-
-
+// verifica se o nome é um valor válido
 function consultaNome() {
-    var num = document.getElementById('nome').value;
+    let num = $('#nome').prop('value')
 
     return (num.length > 0)
 }
 
+// verifica se a dara de nascimento é um valor válido
 function consultaDataNascimento() {
-    var num = document.getElementById('nascimento').value;
+    let num = $('#nascimento').prop('value')
 
     return (num.length > 0)
 }
 
+// verifica se a idade é um valor válido e se condiz com a data de nascimento
 function consultaIdade() {
-    var numIdade = document.getElementById('idade').value;
-    var numNascimento = (document.getElementById('nascimento').value).split('-');
-    var idadeAtual = 0;
+    let numIdade = $('#idade').prop('value')
+    let numNascimento = ($('#nascimento').prop('value').split('-'))
+    let idadeAtual = 0;
 
     const timeElapsed = Date.now();
     const today = new Date(timeElapsed);
 
-    var hoje = (today.toLocaleDateString()).split('/');
+    let hoje = (today.toLocaleDateString()).split('/');
 
     // numNascimentoa a-mm-dd
     // hoje dd-mm-aa
 
-    for (var i = Number(numNascimento[0]); i < Number(hoje[2]) - 1; i++) {
+    for (let i = Number(numNascimento[0]); i < Number(hoje[2]) - 1; i++) {
         idadeAtual += 1;
     }
 
@@ -135,57 +146,59 @@ function consultaIdade() {
     return (numIdade.length > 0 && idadeAtual === Number(numIdade))
 }
 
+// verifica se a rua é um valor válido
 function consultaRua() {
-    var num = document.getElementById('rua').value;
+    let num = $('#rua').prop('value')
 
     return (num.length > 0)
 }
 
+// verifica se o bairro é um valor válido
 function consultaBairro() {
-    var num = document.getElementById('bairro').value;
+    let num = $('#bairro').prop('value')
 
     return (num.length > 0)
 }
 
+// verifica se o número é um valor válido
 function consultaNumero() {
-    var num = document.getElementById('numero').value;
+    let num = $('#numero').prop('value')
 
     return (num.length > 0)
 }
 
-function consultaBairro() {
-    var num = document.getElementById('bairro').value;
-
-    return (num.length > 0)
-}
-
+// verifica se a cidade é um valor válido
 function consultaCidade() {
-    var num = document.getElementById('cidade').value;
+    let num = $('#cidade').prop('value')
 
     return (num.length > 0)
 }
 
+// verifica se o estado é um valor válido
 function consultaEstado() {
-    var num = document.getElementById('estado').value;
+    let num = $('#estado').prop('value')
 
     return (num.length > 0)
 }
 
+// verifica se existem hobbys
 function consultaHobby() {
 
     return (quantidadeHobbys > 0)
 }
 
+// verifica se o input de LGPD foi aceito
 function consultaLGPD() {
 
     return ($('.lgpdCheckbox').is(':checked'))
 }
 
+// verifica se o cep é um valor válido e se corresponde a algum dado na api
 async function consultaCEP() {
-    let numCep = document.getElementById('cep').value;
+    let numCep = $('#cep').prop('value');
 
     //arruma formatação cep para consulta
-    var cep = numCep.split('-').join('');
+    let cep = numCep.split('-').join('');
 
     //verifica validade do cep digitado
     if (cep.length !== 8) {
@@ -195,15 +208,19 @@ async function consultaCEP() {
     //realiza consulta do cep
     let url = `https://viacep.com.br/ws/${cep}/json/`
 
+    // puxa os dados da api
     let response = await fetch(url);
 
+    // transforma os dados em json
     let data = await response.json();
 
+    // atribui os dados obtidos pela api em seus respectivos inputs
     document.getElementById('rua').value = data.logradouro
     document.getElementById('bairro').value = data.bairro
     document.getElementById('cidade').value = data.localidade
     document.getElementById('estado').value = data.uf
 
+    // forcene os valores da api em json para a função do script que validará todos os dados
     recebeDadosCep(data)
 
     if (data.erro) {

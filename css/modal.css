@@ -28,7 +28,7 @@
     top: 0%;
 }
 
-.janela-span{
+.janelaSpan {
     display: flex;
     justify-content: end;
 }
@@ -45,7 +45,7 @@
     transform: rotate(180deg);
 }
 
-.janela-button{
+.janelaButton {
     display: flex;
     justify-content: end;
     margin-top: 3%;
