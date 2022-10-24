@@ -2,7 +2,8 @@
 
 link do site: https://raulvlb.github.io/consulta-dados/
 
-![Form de consulta](https://i.imgur.com/EFVRA2H.png)
+![Form de consulta]([https://i.imgur.com/EFVRA2H.png](https://i.imgur.com/IbmLX55.png))
+![Form de consulta]([[https://i.imgur.com/EFVRA2H.png](https://i.imgur.com/IbmLX55.png](https://i.imgur.com/noWfXqz.png)))
 
 - Utiliza Javascript puro, jquery, html e css como tecnologias
 - Todos os campos são obrigatorios para consulta
