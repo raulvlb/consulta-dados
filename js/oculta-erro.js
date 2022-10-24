@@ -117,10 +117,6 @@ $("#hobby").mousedown(function () {
 });
 
 // apaga erro quando clicar ou digitar algo no campo lgpd quando o mesmo demonstrar algum erro
-$("#lgpd").keypress(function () {
-    $('#lgpd').css('outline-width', '0px');
-    $('#msgErroLgpd').css({ 'display': 'none' });
-});
 $("#lgpd").mousedown(function () {
     $('#lgpd').css('outline-width', '0px');
     $('#msgErroLgpd').css({ 'display': 'none' });
