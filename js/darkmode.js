@@ -11,7 +11,7 @@ function darkmode() {
         $('#darkmode').css({ 'display': 'none' });
         darkmodeon = true
     }else{
-        $('body').get(0).style.setProperty('--cor-container-background', 'rgba(245, 245, 245, 0.9)');
+        $('body').get(0).style.setProperty('--cor-container-background', 'rgba(245, 245, 245, 1)');
         $('body').get(0).style.setProperty('--cor-titulo', 'black');
         $('body').get(0).style.setProperty('--cor-texto', '#5f5f5f');
         $('body').get(0).style.setProperty('--cor-background-gradient', 'rgba(255, 255, 255, 0)');

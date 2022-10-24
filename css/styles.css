@@ -4,7 +4,7 @@
     --cor-texto: #5f5f5f;
     --cor-atencao: red;
     --cor-background-gradient: rgba(255, 255, 255, 0);
-    --cor-container-background: rgba(245, 245, 245, 0.9);
+    --cor-container-background: rgba(245, 245, 245, 1);
     --cor-background-footer: rgba(255, 255, 255, 0.5);
 }
 
@@ -62,7 +62,7 @@ body {
 }
 
 input{
-    background-color: var(--cor-container-background);
+    background-color: var(--cor-background-gradient);
     color: var(--cor-texto);
 }
 
@@ -98,7 +98,7 @@ input{
 }
 
 .submit{
-    background-color: var(--cor-container-background);
+    background-color: var(--cor-background-gradient);
 }
 
 .hobbysInput span {
@@ -261,7 +261,7 @@ input[type='checkbox'] {
 .footer button {
     cursor: pointer;
     color: var(--cor-destaque);
-    background-color: var(--cor-container-background);
+    background-color: var(--cor-background-gradient);
     font-size: 1.2rem;
     font-weight: 700;
     padding: 1% 5% 1% 5%;
@@ -339,7 +339,11 @@ footer a:hover{
     border: solid 2px var(--cor-destaque);
     border-radius: 5px;
     box-shadow: 0.1px 0px 5px var(--cor-titulo);
+    transition: all .5s ease;
+}
 
+.modosDeLuz button:hover{
+    transform: rotate(10deg);
 }
 
 .modosDeLuz span{
