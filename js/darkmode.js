@@ -1,3 +1,4 @@
+// script para ativar e desativar o modo escuro da plataforma
 let darkmodeon = false
 
 function darkmode() {
